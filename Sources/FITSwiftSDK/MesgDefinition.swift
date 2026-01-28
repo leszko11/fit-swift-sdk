@@ -52,8 +52,8 @@ public class MesgDefinition: Equatable {
         globalMessageNumber = mesg.mesgNum
         localMesgNum = mesg.localMesgNum
         endianness = .little
-        fieldDefinitions = mesg.fields.values.map { FieldDefinition(field: $0) }
-        developerFieldDefinitions = mesg.devFields.values.map { DeveloperFieldDefinition(developerField: $0 ) }
+        fieldDefinitions = mesg.fields.values.map { FieldDefinition(field: $0) }.sorted { $0.num < $1.num }
+        developerFieldDefinitions = mesg.devFields.values.map { DeveloperFieldDefinition(developerField: $0 ) }.sorted { $0.fieldDefinitionNumber < $1.fieldDefinitionNumber }
     }
     
     public func write(outputStream: OutputStream) {
