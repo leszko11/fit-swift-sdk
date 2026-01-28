@@ -13,18 +13,11 @@ let package = Package(
             name: "FITSwiftSDK",
             targets: ["FITSwiftSDK"]),
     ],
-    dependencies: [
-        .package(
-            url: "https://github.com/apple/swift-collections.git",
-                .upToNextMinor(from: "1.2.0")
-        )
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "FITSwiftSDK",
-            dependencies: [
-                .product(name: "Collections", package: "swift-collections")
-            ]
+            dependencies: []
         ),
         .testTarget(
             name: "FITSwiftSDKTests",
