@@ -209,12 +209,7 @@ extension Float64 {
         case let binaryIntegerValue as any BinaryInteger:
             value = Float64(binaryIntegerValue)
         case let binaryFloatingPointValue as any BinaryFloatingPoint:
-            if(binaryFloatingPointValue.isInfinite) {
-                value = Float64.nan
-                break
-            }
-
-            value = Float64(floatLiteral: Float64(binaryFloatingPointValue))
+            value = floatingToFloatingCast(binaryFloatingPointValue)
         case let stringProtocolValue as any StringProtocol:
             value = Float64(String(stringProtocolValue))!
         case let boolValue as Bool:
